@@ -1,3 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "tailwindcss";
+
+[type="number"], [type="text"], [type="password"] {
+  @apply ring-1 ring-amber-500 px-3 mt-2 py-2 rounded-md outline-none
+  focus:ring-orange-400 focus:ring-2 duration-150 w-[300px]
+}

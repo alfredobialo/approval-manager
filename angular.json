@@ -8,7 +8,16 @@
   "projects": {
     "approval-manager": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "flat": true,
+          "inlineTemplate": true,
+          "inlineStyle": true,
+          "path": "src/features",
+          "skipTests": true,
+          "changeDetection": "OnPush"
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
