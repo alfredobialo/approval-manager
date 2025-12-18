@@ -2,10 +2,11 @@ import {Component, signal} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
 import {Register} from '../features/auth/register';
 import {StudentResult} from '../features/course/studentResult';
+import {Login} from '../features/auth/login';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Register, StudentResult],
+  imports: [RouterOutlet, Register, StudentResult, Login],
   template: `
     <div class="h-full mx-auto xl:w-[80%] w-full  ">
       <div class="bg-white sticky top-0 h-[65px] px-6 flex justify-start items-center rounded-b-lg shadow-lg">
@@ -15,6 +16,7 @@ import {StudentResult} from '../features/course/studentResult';
         <div class="p-4 ">
           <div class="mt-4  text-neutral-800 px-4 py-6 rounded-lg ring-1 ring-neutral-400 lg:w-[600px] min-h-60">
             <div class="">
+              <app-login />
               <student-result />
               <app-register />
             </div>
