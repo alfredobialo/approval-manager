@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import {form, Field, required, email,  maxLength} from "@angular/forms/signals";
+import {form, Field, required, email, maxLength, apply} from "@angular/forms/signals";
 import {IRegistrationModel, registrationModel} from './model/IRegistrationModel';
 import {JsonPipe} from '@angular/common';
 
@@ -61,10 +61,11 @@ export class Register {
     required(path.firstName, {message : "First Name is Required"});
     required(path.lastName, {message : "Last Name is Required"});
     required(path.password, {message : "Password is Required"});
-    required(path.retypePassword, {message : "Re-type Password is Required"});
+    required(path.retypePassword, {message : "Please Re-type Password"});
     required(path.email, {message : "Email is Required"});
     maxLength(path.email,110, {message : "Maximum Email character length exceeded. (Just Testing max() validator)"});
-    email(path.email, {message : "Email is not valid"});
+    email(path.email,  {message : "Email is not valid"});
+
   });
   constructor() {
     this.regForm.firstName().setControlValue("Alfred");
