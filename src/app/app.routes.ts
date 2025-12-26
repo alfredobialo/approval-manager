@@ -2,11 +2,22 @@ import { Routes } from '@angular/router';
 import {Login} from '../features/auth/login';
 import {RegisterPage} from './pages/register-page';
 import {StudentResult} from '../features/course/studentResult';
+import {LoginPage} from './pages/login-page';
 
 export const routes: Routes = [
   {
     path: 'login',
-    component: Login,
+    component: LoginPage,
+
+  },
+  {
+    path: 'login/?p',
+    component: RegisterPage,
+
+  },
+  {
+    path: ':orgId/:repoId/src/:filesId',
+    component: LoginPage,
 
   },
   {
