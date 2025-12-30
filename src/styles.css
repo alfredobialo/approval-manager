@@ -1,11 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "tailwindcss";
+@import "tailwindcss-primeui";
+@custom-variant dark (&:where(.app-theme, .app-theme *));
 
 [type="number"], [type="text"],[type="email"], [type="password"] {
-  @apply ring-1 ring-amber-500 px-3 mt-2 py-2 rounded-md outline-none
-  focus:ring-orange-400 focus:ring-2 duration-150 w-[300px]
+  @apply ring-1 ring-primary-500 px-3 mt-2 py-2 rounded-md outline-none
+  focus:ring-primary-400 focus:ring-2 duration-150 w-[300px]
 }
 button.primary-main{
-  @apply hover:ring-3 duration-150 focus-within:bg-blue-600 cursor-pointer hover:ring-blue-500 px-6 mt-2 bg-blue-600 hover:bg-blue-800 text-white py-2 rounded-md outline-none
+  @apply hover:ring-3 duration-150 focus-within:bg-primary-600 cursor-pointer hover:ring-primary-500 px-6 mt-2 bg-primary-600 hover:bg-primary-800  py-2 rounded-md outline-none
 }

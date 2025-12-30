@@ -1,26 +1,27 @@
 import {Component, signal} from '@angular/core';
 import {RouterLink, RouterOutlet} from '@angular/router';
-import {Register} from '../features/auth/register';
-import {StudentResult} from '../features/course/studentResult';
-import {Login} from '../features/auth/login';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Register, StudentResult, Login, RouterLink],
+  imports: [RouterOutlet,  RouterLink],
   template: `
     <div class="h-full mx-auto xl:w-[80%] w-full  ">
-      <div class="bg-white sticky top-0 h-[65px] px-6 flex justify-between items-center rounded-b-lg shadow-lg">
-        <h1 class="font-bolder text-4xl text-orange-600/80">{{ title() }}</h1>
-        <div class="space-x-2.5 *:[a]:px-3 *:[a]:text-orange-400">
+      <div class="dark:bg-surface-900/70  bg-white sticky top-0 h-[65px] px-6 flex justify-between items-center rounded-b-lg shadow-lg backdrop-blur-sm">
+        <h1 class="font-bolder text-4xl text-primary-600">{{ title() }}</h1>
+        <div class="space-x-2.5 *:[a]:px-3 *:[a]:text-primary-400">
+          <button
+            (click)="changeDarkMode()"
+            class="size-[45px] p-2 dark:bg-green-600 bg-green-700  rounded-full">L/D</button>
           <a routerLink="/result">Result</a>
           <a routerLink="/login">Login</a>
           <a routerLink="/register">Register</a>
+          <a routerLink="/ng">Angular Features</a>
         </div>
       </div>
-      <div class="mt-6 bg-white h-full rounded-t-md flex flex-col justify-center items-center">
+      <div class="mt-6 dark:bg-surface-800 bg-surface-100 h-full rounded-t-md flex flex-col justify-center items-center">
         <div class="p-4 ">
           <router-outlet></router-outlet>
-          <div class="bg-purple-100 p-4 mt-10">
+          <div class="bg-primary-contrast p-4 mt-10">
             <h2>Student Grading</h2>
             Enter your Score:
             <input type="number" #myScore value="40" (keyup.enter)="calcGrade(myScore)">
@@ -46,6 +47,10 @@ export class App {
     const grade = studentGradeCalculator(scoreDomElm.valueAsNumber);
     this.myGrade.set(grade);
     console.log(scoreDomElm)
+  }
+
+  protected changeDarkMode() {
+    document.documentElement.classList.toggle('app-theme');
   }
 }
 

@@ -3,7 +3,7 @@ import {Login} from "../../features/auth/login";
 @Component({
   imports: [Login],
   template: `
-    <div class="bg-purple-200 p-6">
+    <div class="bg-primary-contrast p-6 flex justify-center items-center">
       <app-login />
     </div>
 

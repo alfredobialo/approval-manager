@@ -11,11 +11,11 @@ import {JsonPipe} from '@angular/common';
     <div>
       <h1 class="text-xl text-blue-600">
         {{ result().firstName }} {{ result().lastName }}
-        =>> <span class="text-pink-600 font-bold">{{result().id}}</span>
+        =>> <span class=" font-bold">{{result().id}}</span>
       </h1>
 
       <div>
-        <pre class="p-4 bg-yellow-100">
+        <pre class="p-4 bg-primary-contrast">
           {{ result().examResult | json }}
         </pre>
       </div>

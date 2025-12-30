@@ -13,7 +13,7 @@
           "flat": true,
           "inlineTemplate": true,
           "inlineStyle": true,
-          "path": "src/features",
+          "path": "src",
           "skipTests": true,
           "changeDetection": "OnPush"
         }
