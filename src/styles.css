@@ -11,3 +11,9 @@
 button.primary-main{
   @apply hover:ring-3 hover:text-white duration-150 focus-within:bg-primary-600 cursor-pointer hover:ring-primary-500 px-6 mt-2 dark:bg-primary-600 bg-primary-400 hover:bg-primary-800  py-2 rounded-md outline-none
 }
+button.danger-main{
+  @apply hover:ring-3 hover:text-white duration-150 focus-within:bg-red-600 cursor-pointer hover:ring-red-500 px-6 mt-2 dark:bg-red-600 bg-red-400 hover:bg-red-800  py-2 rounded-md outline-none
+}
+button.circular-button{
+  @apply size-[45px] rounded-full flex justify-center items-center p-3 ;
+}

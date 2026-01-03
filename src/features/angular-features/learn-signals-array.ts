@@ -15,6 +15,7 @@ import {DecimalPipe, CurrencyPipe} from '@angular/common';
         <th>Qty</th>
         <th>Price</th>
         <th>Line Total</th>
+        <th></th>
       </thead>
       <tbody>
         @for(item of salesItems(); track $index){
@@ -24,6 +25,14 @@ import {DecimalPipe, CurrencyPipe} from '@angular/common';
             <td><button class="primary-main" (click)="removeQty($index)">-</button> {{item.qty | number}} <button class="primary-main" (click)="addQty(1,$index)">+</button></td>
             <td>{{item.amount.amount | currency:item.amount.currency}}</td>
             <td>{{item.amount.amount * item.qty | currency:item.amount.currency }}</td>
+            <td><button class="danger-main circular-button" (click)="removeItem($index)">X</button></td>
+          </tr>
+        } @empty {
+          <tr class="table-row text-left h-[40px] border-b-2 border-amber-300">
+            <td colspan="6" class=" text-center">
+              <p class="text-2xl dark:text-yellow-500"> No Item in your cart!</p>
+            </td>
+
           </tr>
         }
 
@@ -55,6 +64,10 @@ export class LearnSignalsArray {
       item.qty -= 1;
   }
 
+  protected removeItem(index: number) {
+    const item = this.salesItems().splice(index,1);
+    console.log(item, this.salesItems());
+  }
 }
 
 export interface SalesInvoiceItem {
