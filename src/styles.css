@@ -9,5 +9,5 @@
   focus:ring-primary-400 focus:ring-2 duration-150 w-[300px]
 }
 button.primary-main{
-  @apply hover:ring-3 duration-150 focus-within:bg-primary-600 cursor-pointer hover:ring-primary-500 px-6 mt-2 bg-primary-600 hover:bg-primary-800  py-2 rounded-md outline-none
+  @apply hover:ring-3 hover:text-white duration-150 focus-within:bg-primary-600 cursor-pointer hover:ring-primary-500 px-6 mt-2 dark:bg-primary-600 bg-primary-400 hover:bg-primary-800  py-2 rounded-md outline-none
 }

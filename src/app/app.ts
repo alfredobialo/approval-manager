@@ -19,7 +19,7 @@ import {RouterLink, RouterOutlet} from '@angular/router';
         </div>
       </div>
       <div class="mt-6 dark:bg-surface-800 bg-surface-100 h-full rounded-t-md flex flex-col justify-center items-center">
-        <div class="p-4 ">
+        <div class="p-4 w-full">
           <router-outlet></router-outlet>
           <div class="bg-primary-contrast p-4 mt-10">
             <h2>Student Grading</h2>
