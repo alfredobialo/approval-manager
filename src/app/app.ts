@@ -15,7 +15,8 @@ import {RouterLink, RouterOutlet} from '@angular/router';
           <a routerLink="/result">Result</a>
           <a routerLink="/login">Login</a>
           <a routerLink="/register">Register</a>
-          <a routerLink="/ng">Angular Features</a>
+          <a routerLink="/ng">Ng Features</a>
+          <a routerLink="/tv-remote">Smart Tv / Remote</a>
         </div>
       </div>
       <div class="mt-6 dark:bg-surface-800 bg-surface-100 h-full rounded-t-md flex flex-col justify-center items-center">
