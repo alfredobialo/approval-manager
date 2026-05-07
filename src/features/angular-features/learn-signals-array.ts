@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, computed, effect, Injector, signal, WritableSignal,Signal} from '@angular/core';
+import {ChangeDetectionStrategy, Component, computed,linkedSignal, effect, Injector, signal, WritableSignal,Signal} from '@angular/core';
 import {DecimalPipe, CurrencyPipe, JsonPipe} from '@angular/common';
 
 @Component({
@@ -119,7 +119,7 @@ export class LearnSignalsArray {
     })
     return {currency : 'NGN', amount : sum};
   });
-  firstItem = computed(() => {
+  firstItem = linkedSignal(() => {
     return this.salesItems()[0];
   });
   lineTotal = computed(() => {
