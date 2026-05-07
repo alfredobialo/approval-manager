@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import {form, FormField, required, email, maxLength, apply} from "@angular/forms/signals";
+import {form, Field, required, email, maxLength, apply} from "@angular/forms/signals";
 import {IRegistrationModel, registrationModel} from './model/IRegistrationModel';
 import {JsonPipe} from '@angular/common';
 
@@ -7,7 +7,7 @@ import {JsonPipe} from '@angular/common';
   selector: 'app-register',
   imports: [
     JsonPipe,
-    FormField
+    Field
   ],
   host : {
     class: ''
@@ -19,17 +19,17 @@ import {JsonPipe} from '@angular/common';
     <div class="mb-4">
         <p>First Name</p>
         <input type="text" class=""
-               [formField]="regForm.firstName">
+               [field]="regForm.firstName">
       </div>
     <div class="mb-4">
         <p>Last Name</p>
         <input type="text" class=""
-               [formField]="regForm.lastName">
+               [field]="regForm.lastName">
       </div>
     <div class="mb-4">
         <p>Email Address</p>
         <input type="text" class=" "
-               [formField]="regForm.email">
+               [field]="regForm.email">
       <div class="mt-2">
       @if(regForm.email().value() !== "" && !regForm.email().valid()) {
         @for(err of regForm.email().errors(); track err.kind) {

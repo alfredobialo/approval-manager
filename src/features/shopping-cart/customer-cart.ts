@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, computed,linkedSignal, effect, Injec
 import {DecimalPipe, CurrencyPipe, JsonPipe} from '@angular/common';
 
 @Component({
-  selector: 'app-learn-signals-array, SalesInvoice',
+  selector: 'cart-items, customer-cart',
   imports: [DecimalPipe, CurrencyPipe, JsonPipe],
   template: `
     <p>
@@ -102,7 +102,7 @@ import {DecimalPipe, CurrencyPipe, JsonPipe} from '@angular/common';
   styles: ``,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LearnSignalsArray {
+export class CustomerCart {
   salesItems = signal<SalesInvoiceItem[]>(getSalesInvoiceItems());
   salesItems2 = signal<SalesInvoiceItem2[]>(getSalesInvoiceItems2());
   salesTotal = computed<Money>(() => {
