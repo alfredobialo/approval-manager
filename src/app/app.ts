@@ -3,7 +3,7 @@ import {RouterLink, RouterOutlet} from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,  RouterLink],
+  imports: [RouterOutlet],
   template: `
     <div class="h-full mx-auto xl:w-[80%] w-full  ">
       <div class="dark:bg-surface-900/70  bg-white sticky top-0 h-[65px] px-6 flex justify-between items-center rounded-b-lg shadow-lg backdrop-blur-sm">

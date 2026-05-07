@@ -1,12 +1,12 @@
 import {ChangeDetectionStrategy, Component, signal} from '@angular/core';
 import {loginModel} from './model/LoginModel';
-import {email, Field, form, required} from '@angular/forms/signals';
+import {email, FormField, form, required} from '@angular/forms/signals';
 import {JsonPipe} from '@angular/common';
 
 @Component({
   selector: 'app-login',
   imports: [
-    Field,
+    FormField,
     JsonPipe
   ],
   template: `
@@ -18,14 +18,14 @@ import {JsonPipe} from '@angular/common';
         <div class="">
           <div class="mb-4">
             <p>Email Address:</p>
-            <input type="email" [field]="frm.email">
+            <input type="email" [formField]="frm.email">
           </div>
           <div class="mb-4">
             <p>Password:</p>
-            <input type="password" [field]="frm.password">
+            <input type="password" [formField]="frm.password">
           </div>
           <div class="mb-4">
-            <label for="chkRemember">Remember Password : <input type="checkbox" [field]="frm.rememberMe"></label>
+            <label for="chkRemember">Remember Password : <input type="checkbox" [formField]="frm.rememberMe"></label>
 
           </div>
           <div class="mb-4">
