@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, effect, input, signal, SimpleChanges, untracked} from '@angular/core';
+import {ChangeDetectionStrategy, Component, effect, input, signal, linkedSignal, untracked} from '@angular/core';
 
 @Component({
   selector: 'app-smart-tv',
@@ -20,44 +20,36 @@ import {ChangeDetectionStrategy, Component, effect, input, signal, SimpleChanges
 export class SmartTv {
   protected isTvOn = signal(false);
   tvCmd = input<string>("");
+  tvCmdRunner = linkedSignal<string>(() => this.tvCmd());
 
   constructor() {
     effect(() => {
-      /*const cmd  = this.tvCmd();
 
-        if(cmd === "ON/OFF"){
-          /!*if(this.isTvOn()){
-            untracked(() =>  this.turnOff());
+      const cmd  = this.tvCmdRunner();
+      untracked(() => {
+        if (cmd === "ON/OFF") {
+          if (this.isTvOn()) {
+            this.turnOff()
+
+          } else {
+            this.turnOn()
+
           }
-          else{
-            untracked(() =>  this.turnOn());
-          }*!/
         }
-        console.log("TV got CMD => ",cmd);*/
-
+        console.log("TV got CMD => ", cmd);
+      });
 
     })
   }
-  ngOnChanges(changes: SimpleChanges<SmartTv>) {
-    const cmd  = changes.tvCmd?.currentValue;
-    if(cmd === "ON/OFF"){
-      if(this.isTvOn()){
-        this.turnOff();
 
-      }
-      else{
-        this.turnOn();
-      }
-    }
-    console.log("TV got CMD => ",cmd, changes.tvCmd);
-  }
    protected turnOn(){
     this.isTvOn.set(true);
-
+    this.tvCmdRunner.set("");
 
   }
 
    protected turnOff() {
     this.isTvOn.set(false);
+    this.tvCmdRunner.set("");
   }
 }
