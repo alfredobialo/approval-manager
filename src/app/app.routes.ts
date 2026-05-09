@@ -16,7 +16,7 @@ export const routes: Routes = [
     component: RegisterPage,
   },
   {
-    path: 'catalog?q',
+    path: 'product/:id',
     component: ProductDetailsPage,
   },
   {
