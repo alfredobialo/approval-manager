@@ -29,7 +29,7 @@ import {BaseUIComponent} from '../../shared/BaseUIComponent';
           </div>
 
           <div class=" flex gap-4">
-            <button class="2xl:text-xl text-2xl  mt-6 bg-blue-600 text-white  dark:bg-surface-700 duration-300 px-6 py-3 rounded-lg
+            <button class="2xl:text-xl text-2xl  mt-6 bg-blue-600 text-white   dark:bg-black duration-300 px-6 py-3 rounded-lg
           shadow flex justify-center items-center
           hover:bg-blue-700 ">Add To
               Cart

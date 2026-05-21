@@ -5,7 +5,7 @@ export abstract class BaseUIComponent {
   handleUIEnterAnimation(evt : AnimationCallbackEvent) {
     console.log("Enter Animation",evt);
     const anim  =  animate(evt.target, {
-      duration: 1000,
+      duration: 700,
       y : {
         from : 50,
         ease :"outQuad"

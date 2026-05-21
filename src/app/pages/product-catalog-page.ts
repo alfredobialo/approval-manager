@@ -4,6 +4,7 @@ import {ProductInfoModel} from '../../shared/product-atalog/models/ProductInfoMo
 import {CommonModule, NgOptimizedImage} from '@angular/common';
 import {RouterLink} from '@angular/router';
 import {animate, stagger} from 'animejs';
+import {BaseUIComponent} from '../../shared/BaseUIComponent';
 @Component({
   imports: [
     CommonModule,
@@ -37,7 +38,7 @@ import {animate, stagger} from 'animejs';
   styles: ``,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProductCatalogPage  {
+export class ProductCatalogPage extends BaseUIComponent {
   private productCatalogService = inject(ProductCatalogService);
   protected products = this.productCatalogService.getProducts();
 
@@ -53,7 +54,7 @@ export class ProductCatalogPage  {
         from : 1.2
       },
       y : {
-        from : "400px"
+        from : -50
       }
     });
     console.log("Product Catalog Page ANIMATION ", elem);
