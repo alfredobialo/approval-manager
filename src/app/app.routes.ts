@@ -3,6 +3,7 @@ import {RegisterPage} from './pages/register-page';
 import {LoginPage} from './pages/login-page';
 import {ProductCatalogPage} from './pages/product-catalog-page';
 import {ProductDetailsPage} from './pages/product-details-page';
+import {NotFoundPage} from './pages/NotFoundPage';
 
 
 export const routes: Routes = [
@@ -16,11 +17,21 @@ export const routes: Routes = [
     component: RegisterPage,
   },
   {
-    path: 'product/:id',
+    path: 'product-catalog/product',
     component: ProductDetailsPage,
+  },
+
+  {
+    path: 'product-catalog',
+    component: ProductCatalogPage,
   },
   {
     path: '',
-    component: ProductCatalogPage,
-  }
+    redirectTo: "product-catalog",
+    pathMatch: 'full',
+  },
+  {
+    path: '**',
+    component: NotFoundPage,
+  },
 ];
