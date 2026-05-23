@@ -96,4 +96,32 @@ export abstract class BaseUIComponent {
     });
     console.log("Product Catalog Page ANIMATION ", elem);
   }
+
+  handleSlideFromRightUIEnterAnimation(evt : AnimationCallbackEvent) {
+    const anim  =  animate(evt.target, {
+      duration: 1500,
+      opacity: {
+        from: 0
+      },
+      right: {
+        from : "-100px"
+      },
+      ease:"inOutElastic"
+    });
+  }
+  handleSlideFromRightUILeaveAnimation(evt :  AnimationCallbackEvent) {
+    console.log("Leave Animation",evt);
+    animate(evt.target, {
+      duration: 1300,
+      opacity: {
+        to: 0
+      },
+      scale: 0.6,
+      y : {
+        to : "+=100"
+      },
+      ease :"inOutBack",
+      onComplete: (jsAnimation) => { evt.animationComplete();}
+    })
+  }
 }
