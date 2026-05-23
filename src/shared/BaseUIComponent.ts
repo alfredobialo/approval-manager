@@ -1,7 +1,13 @@
-import {AnimationCallbackEvent} from '@angular/core';
-import {animate} from 'animejs';
+import {AnimationCallbackEvent, inject} from '@angular/core';
+import {animate, engine, stagger} from 'animejs';
+import {DEFAULT_ANIMATION_DURATION} from './Custom-Injection-Tokens';
 
 export abstract class BaseUIComponent {
+
+  private defDuration  = inject(DEFAULT_ANIMATION_DURATION);
+  constructor() {
+    engine.defaults.duration = this.defDuration;
+  }
   handleUIEnterAnimation(evt : AnimationCallbackEvent) {
     console.log("Enter Animation",evt);
     const anim  =  animate(evt.target, {
@@ -72,5 +78,22 @@ export abstract class BaseUIComponent {
       ease :"inOutBack",
       onComplete: (jsAnimation) => { evt.animationComplete();}
     })
+  }
+  protected handleStaggerAnimationEnter(evt: AnimationCallbackEvent) {
+
+    const elem = evt.target.querySelectorAll(".product-catalog");
+    const anim  =  animate(elem, {
+      opacity : { from : 0.0},
+      ease : "inElastic",
+      delay : stagger(100),
+      duration : stagger(120, { start : 600}),
+      scale : {
+        from : 1.2
+      },
+      y : {
+        from : -50
+      }
+    });
+    console.log("Product Catalog Page ANIMATION ", elem);
   }
 }

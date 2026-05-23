@@ -9,6 +9,7 @@ import {BaseUIComponent} from '../../shared/BaseUIComponent';
   imports: [
     CommonModule,
     RouterLink
+
   ],
   template: `
     <div class="h-full">
@@ -17,7 +18,8 @@ import {BaseUIComponent} from '../../shared/BaseUIComponent';
 
         <div class="">
           <div class="h-[350px] w-[280px] xl:h-[560px] xl:w-[390px] relative rounded-2xl shadow mb-10 overflow-hidden">
-            <img [src]="p?.imageUrl" class="object-fill" alt="" priority  (animate.enter)="handleUIEnterAnimation($event)"
+            <img [src]="p?.imageUrl" class="object-fill" alt="" priority
+                 (animate.enter)="handleUIEnterAnimation($event)"
                  (animate.leave)="handleUILeaveAnimation($event)">
             <div class="mt-10 bg-blue-500 text-white dark:bg-black/60 px-4 py-6 absolute left-0 right-0 bottom-0 "
                  (animate.enter)="handleUIEnterAnimation($event)"

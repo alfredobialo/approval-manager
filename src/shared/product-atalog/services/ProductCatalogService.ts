@@ -1,14 +1,15 @@
 import {Injectable, signal, WritableSignal} from "@angular/core";
 import {DEFAULT_IMAGE_URL, ProductInfoModel, ProductInfoModelFactory} from '../models/ProductInfoModel';
 import {HttpClient} from '@angular/common/http';
-
+import {of, Observable} from 'rxjs';
+import {delay} from 'rxjs/operators';
 @Injectable({
   providedIn: "root",
 })
 export class ProductCatalogService {
   constructor(private httpClient:HttpClient) {
   }
-  private products = signal<ProductInfoModel[]>(
+  private products =
     [
       {
         id : "001",
@@ -24,9 +25,15 @@ export class ProductCatalogService {
       ProductInfoModelFactory.create("005","Iphone 16 Pro Max", 3000000),
       ProductInfoModelFactory.create("006","Infinix Smart", 300000),
       ProductInfoModelFactory.create("007","villaon v30", 200000)
-  ]);
+  ];
   getProducts() {
-    return this.products;
+    return signal<ProductInfoModel[]>(this.products);
+  }
+
+  $getProducts()  : Observable<ProductInfoModel[]>{
+    return of(this.products)
+      .pipe(delay(3000))
+
   }
 
 }
