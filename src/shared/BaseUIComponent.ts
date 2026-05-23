@@ -110,15 +110,13 @@ export abstract class BaseUIComponent {
     });
   }
   handleSlideFromRightUILeaveAnimation(evt :  AnimationCallbackEvent) {
-    console.log("Leave Animation",evt);
     animate(evt.target, {
-      duration: 1300,
+      duration: 800,
       opacity: {
         to: 0
       },
-      scale: 0.6,
-      y : {
-        to : "+=100"
+      right : {
+        to : "-100px"
       },
       ease :"inOutBack",
       onComplete: (jsAnimation) => { evt.animationComplete();}

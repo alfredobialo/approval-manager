@@ -17,8 +17,8 @@ import {BaseUIComponent} from '../../shared/BaseUIComponent';
           <p class="font-bold text-2xl ">{{ label() }}</p>
           <div class="mt-8">
             @for (i of items(); track $index) {
-              <div class="flex gap-x-3">
-                <p>{{ i.productInfo.name }}</p>
+              <div class="flex gap-y-3 flex-col items-center ">
+               <img [src]="i.productInfo.imageUrl" alt="" class="object-fill h-[90px] w-[80px]">
                 <p>{{ i.productInfo.price | currency:'NGN' }}</p>
               </div>
             }
