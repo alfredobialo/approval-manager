@@ -21,3 +21,11 @@ export class ProductInfoModelFactory{
 
 
 }
+
+
+export interface CartItemModel{
+  id:string;
+  productInfo:ProductInfoModel;
+  qty:number;
+
+}

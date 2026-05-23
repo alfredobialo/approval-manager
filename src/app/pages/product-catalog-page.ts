@@ -1,22 +1,24 @@
-import {AnimationCallbackEvent, ChangeDetectionStrategy, Component, inject, OnInit, signal} from '@angular/core';
+import {AnimationCallbackEvent, ChangeDetectionStrategy, Component, inject, OnInit, signal, viewChild} from '@angular/core';
 import {ProductCatalogService} from '../../shared/product-atalog/services/ProductCatalogService';
-import {ProductInfoModel} from '../../shared/product-atalog/models/ProductInfoModel';
+import {CartItemModel, ProductInfoModel} from '../../shared/product-atalog/models/ProductInfoModel';
 import {CommonModule, NgOptimizedImage} from '@angular/common';
 import {RouterLink} from '@angular/router';
 import {animate, stagger} from 'animejs';
 import {BaseUIComponent} from '../../shared/BaseUIComponent';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {ProductCatalogSkeleton} from '../../features/shopping-cart/product-catalog-skeleton';
+import {CartItems} from '../../features/shopping-cart/cart-item';
 @Component({
   imports: [
     CommonModule,
     NgOptimizedImage,
     RouterLink,
-    ProductCatalogSkeleton
+    ProductCatalogSkeleton,
+    CartItems
   ],
   template: `
     <div class="h-full">
-      <h1 class="2xl:text-3xl text-xl duration-100 dark:text-gray-400 text-gray-600">Product Catalog  => {{isLoading()}}</h1>
+      <h1 class="2xl:text-3xl text-xl duration-100 dark:text-gray-400 mb-10 text-gray-600">Product Catalog</h1>
       @if(isLoading()){
         <ProductCatalogSkeleton />
       }
@@ -32,9 +34,12 @@ import {ProductCatalogSkeleton} from '../../features/shopping-cart/product-catal
               <p class="text-md">{{ p.currency }} <span class="font-bold text-[1.3rem] dark:text-primary-200 text-primary-600">{{ p.price | number }}</span></p>
               <div class="flex xl:justify-between px-4 py-2 mt-8">
                 <div class="">Qty Component</div>
-                <button class= "shadow text-lg dark:bg-stone-600 px-6 py-2 rounded-lg   dark:hover:bg-stone-500 bg-primary-400  ">Add To Cart</button>
+                <button class= "shadow text-lg dark:bg-stone-600 px-6 py-2 rounded-lg   dark:hover:bg-stone-500 bg-primary-400  "
+                (click)="addToCart(p)">Add To Cart</button>
               </div>
             </div>
+          } @empty {
+            <p class="text-3xl">No Product here!</p>
           }
 
         </div>
@@ -42,6 +47,7 @@ import {ProductCatalogSkeleton} from '../../features/shopping-cart/product-catal
 
 
     </div>
+    <CartItems #cartComponent label="Shopping Cart" [visible]="showCartItems()" />
   `,
   styles: ``,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -50,6 +56,8 @@ export class ProductCatalogPage extends BaseUIComponent {
   private productCatalogService = inject(ProductCatalogService);
   protected products = signal<ProductInfoModel[]>([]);
   protected isLoading = signal<boolean>(false);
+  protected showCartItems = signal<boolean>(false);
+  cartComponent = viewChild<CartItems>("cartComponent");
   constructor() {
     super();
     //const signalProduct = toSignal<ProductInfoModel[]>(this.productCatalogService.$getProducts());
@@ -69,6 +77,17 @@ export class ProductCatalogPage extends BaseUIComponent {
         complete : () => this.isLoading.set(false),
         error: error => console.log(error)
       });
+  }
+
+  addToCart(product: ProductInfoModel){
+    this.showCartItems.set(true);
+    const cartItem: CartItemModel = {
+      productInfo : product,
+      qty  :1,
+      id : `${product.id}-cart`
+    };
+
+    this.cartComponent()?.addToCart(cartItem);
   }
 }
 

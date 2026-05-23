@@ -39,12 +39,13 @@ import {BaseUIComponent} from '../../shared/BaseUIComponent';
             <a routerLink="../" class="2xl:text-xl text-2xl  mt-6 bg-stone-100 text-shadow-stone-600  dark:bg-surface-700 duration-300 px-6 py-3 rounded-lg
           shadow flex justify-center items-center
           dark:hover:bg-orange-300 ">Back To
-              Cart
+              Catalog
             </a>
           </div>
 
         </div>
       </div>
+
     </div>
   `,
   styles: ``,
