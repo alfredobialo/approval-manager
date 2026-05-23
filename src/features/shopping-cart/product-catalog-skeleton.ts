@@ -8,7 +8,7 @@ import {SkeletonModule} from 'primeng/skeleton';
     SkeletonModule
   ],
   template: `
-    <div class="xl:grid xl:grid-cols-3 xl:grid-flow-row xl:gap-6 relative" >
+    <div class="lg:grid xl:grid-cols-3 lg:grid-cols-2 4xl:grid-cols-5 5xl:grid-cols-7 xl:grid-flow-row xl:gap-6 relative" >
       @for(p of [1,2,3,4,5,6,7,8] ;track $index){
         <div class="mb-[100px] min-h-[400px] rounded-2xl border-2 bg-white dark:bg-transparent border-gray-300 dark:border-surface-700 px-6
           ">

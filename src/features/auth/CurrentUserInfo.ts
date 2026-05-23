@@ -5,7 +5,7 @@ import {AuthService} from './services/AuthService';
   standalone: true,
   selector: 'CurrentUserInfo',
   template: `
-    <p class="text-2xl">{{ fullName() }}</p>`
+    <p class="2xl:text-2xl text-lg">{{ user().firstName }} <span class="hidden xl:inline"> {{user().lastName}}</span></p>`
 })
 export class CurrentUserInfo {
   protected user = inject(AuthService).getCurrentUser();

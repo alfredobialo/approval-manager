@@ -23,7 +23,7 @@ import {CartItems} from '../../features/shopping-cart/cart-item';
         <ProductCatalogSkeleton />
       }
       @else{
-        <div class="xl:grid xl:grid-cols-3 xl:grid-flow-row xl:gap-6 relative" (animate.enter)="handleStaggerAnimationEnter($event)">
+        <div class="lg:grid xl:grid-cols-3 lg:grid-cols-2 4xl:grid-cols-5 5xl:grid-cols-7 xl:grid-flow-row xl:gap-6 relative" (animate.enter)="handleStaggerAnimationEnter($event)">
           @for(p of products() ;track p.id){
             <div class="mb-[100px] rounded-2xl border-2 bg-white dark:bg-transparent  product-catalog border-gray-300 dark:border-surface-700 px-6
           hover:shadow-xl hover:dark:shadow-gray-600 duration-300 hover:scale-105">

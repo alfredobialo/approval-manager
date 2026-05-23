@@ -8,7 +8,7 @@ import {CurrentUserInfo} from '../features/auth/CurrentUserInfo';
   template: `
     <div class="h-full mx-auto xl:w-[80%] w-full  ">
       <div class="dark:bg-surface-900/70 z-50  bg-white sticky top-0 h-[65px] px-6 flex justify-between items-center rounded-b-lg shadow-lg backdrop-blur-sm">
-        <h1 class="font-bolder text-4xl text-primary-600">{{ title() }}</h1>
+        <h1 class="font-bolder 2xl:text-4xl text-md text-primary-600">{{ title() }}</h1>
         <div class="space-x-2.5 *:[a]:px-3 *:[a]:text-primary-400 flex itens-center">
           <CurrentUserInfo />
           <button
