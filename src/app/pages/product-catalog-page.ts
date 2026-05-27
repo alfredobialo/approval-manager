@@ -27,8 +27,8 @@ import {CartItems} from '../../features/shopping-cart/cart-item';
           @for(p of products() ;track p.id){
             <div class="mb-[100px] rounded-2xl border-2 bg-white dark:bg-transparent  product-catalog border-gray-300 dark:border-surface-700 px-6
           hover:shadow-xl hover:dark:shadow-gray-600 duration-300 hover:scale-105">
-              <div class="h-[200px] w-[150px] xl:h-[360px] xl:w-[310px]  ">
-                <img [ngSrc]="p.imageUrl" width="310" height="360" alt=""priority>
+              <div class="h-[220px] w-[190px] xl:h-[360px] xl:w-[310px] py-4 ">
+                <img [src]="p.imageUrl" class="aspect-auto " alt=""priority>
               </div>
               <a  [routerLink]="['product']" [queryParams]="{id:p.id}"  class="text-2xl dark:text-blue-400 text-blue-600 underline">{{ p.name }}</a>
               <p class="text-md">{{ p.currency }} <span class="font-bold text-[1.3rem] dark:text-primary-200 text-primary-600">{{ p.price | number }}</span></p>

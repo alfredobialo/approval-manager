@@ -99,14 +99,14 @@ export abstract class BaseUIComponent {
 
   handleSlideFromRightUIEnterAnimation(evt : AnimationCallbackEvent) {
     const anim  =  animate(evt.target, {
-      duration: 1500,
+      duration: 700,
       opacity: {
         from: 0
       },
       right: {
         from : "-100px"
       },
-      ease:"inOutElastic"
+      ease:"linear"
     });
   }
   handleSlideFromRightUILeaveAnimation(evt :  AnimationCallbackEvent) {
@@ -118,7 +118,7 @@ export abstract class BaseUIComponent {
       right : {
         to : "-100px"
       },
-      ease :"inOutBack",
+      ease :"linear",
       onComplete: (jsAnimation) => { evt.animationComplete();}
     })
   }

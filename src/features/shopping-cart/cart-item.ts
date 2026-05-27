@@ -1,4 +1,4 @@
-import {Component, effect, input, linkedSignal, signal} from '@angular/core';
+import {Component, computed, effect, input, linkedSignal, signal} from '@angular/core';
 import {CartItemModel} from '../../shared/product-atalog/models/ProductInfoModel';
 import {CurrencyPipe} from '@angular/common';
 import {BaseUIComponent} from '../../shared/BaseUIComponent';
@@ -10,12 +10,11 @@ import {BaseUIComponent} from '../../shared/BaseUIComponent';
     CurrencyPipe
   ],
   template: `
-    <p>Visible Input: {{ visible() }}, LinkedSignal: {{ _visible() }}</p>
     @if (_visible()) {
       <div
         (animate.enter)="handleSlideFromRightUIEnterAnimation($event)"
         (animate.leave)="handleSlideFromRightUILeaveAnimation($event)"
-        class="cart w-[180px] 2xl:w-[280px] h-full fixed right-0 top-0 bottom-0 dark:bg-black/80 bg-primary-800/80 z-10 backdrop-blur-2xl">
+        class="cart w-[110px] xl:w-[180px] 3xl:w-[280px] h-full fixed right-0 top-0 bottom-0 dark:bg-black/80 bg-primary-800/80 z-10 backdrop-blur-2xl">
         <div class="p-3 px-6 mt-[68px]">
           <p class="xl:font-bold xl:text-2xl text-lg">
             @let labelSplit = label().split(" ");
@@ -47,22 +46,17 @@ import {BaseUIComponent} from '../../shared/BaseUIComponent';
 })
 export class CartItems extends BaseUIComponent {
   label = input<string>("Cart Items");
-  visible = input<boolean>(false);
- /* private visibleEffect = effect(() => {
-    const visibleChanged = this.visible();
-    this._visible.set(visibleChanged);
-    console.log(visibleChanged, this._visible());
-  });
-*/
-  protected _visible = linkedSignal<boolean>(() => this.visible());
   protected items = signal<CartItemModel[]>([]);
+  protected closeRequested = signal(false);
+  protected _visible = computed<boolean>(() => this.items().length > 0 && this.closeRequested() ===false);
 
   addToCart(item: CartItemModel): void {
     const newList = [item, ...this.items()];
     this.items.set(newList);
+    this.closeRequested.set(false);
   }
 
   protected close() {
-    this._visible.set(false);
+    this.closeRequested.set(true);
   }
 }
