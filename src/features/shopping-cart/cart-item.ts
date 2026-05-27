@@ -1,4 +1,4 @@
-import {Component, computed, input, linkedSignal, signal} from '@angular/core';
+import {Component, effect, input, linkedSignal, signal} from '@angular/core';
 import {CartItemModel} from '../../shared/product-atalog/models/ProductInfoModel';
 import {CurrencyPipe} from '@angular/common';
 import {BaseUIComponent} from '../../shared/BaseUIComponent';
@@ -10,7 +10,7 @@ import {BaseUIComponent} from '../../shared/BaseUIComponent';
     CurrencyPipe
   ],
   template: `
-    <p>Visible Input: {{visible()}}, LinkedSignal: {{_visible()}}</p>
+    <p>Visible Input: {{ visible() }}, LinkedSignal: {{ _visible() }}</p>
     @if (_visible()) {
       <div
         (animate.enter)="handleSlideFromRightUIEnterAnimation($event)"
@@ -20,9 +20,9 @@ import {BaseUIComponent} from '../../shared/BaseUIComponent';
           <p class="xl:font-bold xl:text-2xl text-lg">
             @let labelSplit = label().split(" ");
             <span class="hidden xl:inline">{{ labelSplit[0] }}  </span><span class="">{{ labelSplit[1] }}</span>
-            <span class="text-primary"> ({{items().length}})</span></p>
+            <span class="text-primary"> ({{ items().length }})</span></p>
           <div class="mt-8">
-            <div class="">
+            <div class="overflow-y-scroll min-h-[300px] h-[500px]">
               @for (i of items(); track $index) {
                 <div class="flex gap-y-3 flex-col items-center ">
                   <img [src]="i.productInfo.imageUrl" alt="" class="object-fill h-[90px] w-[80px]">
@@ -32,8 +32,8 @@ import {BaseUIComponent} from '../../shared/BaseUIComponent';
             </div>
 
             <div class="mt-10">
-            <button class="danger-main" (click)="close()">Close</button>
-          </div>
+              <button class="danger-main" (click)="close()">Close</button>
+            </div>
           </div>
 
 
@@ -45,17 +45,24 @@ import {BaseUIComponent} from '../../shared/BaseUIComponent';
 
   `
 })
-export class CartItems extends BaseUIComponent{
+export class CartItems extends BaseUIComponent {
   label = input<string>("Cart Items");
   visible = input<boolean>(false);
+ /* private visibleEffect = effect(() => {
+    const visibleChanged = this.visible();
+    this._visible.set(visibleChanged);
+    console.log(visibleChanged, this._visible());
+  });
+*/
   protected _visible = linkedSignal<boolean>(() => this.visible());
   protected items = signal<CartItemModel[]>([]);
-  addToCart(item : CartItemModel): void {
-    const newList = [item,...this.items() ];
+
+  addToCart(item: CartItemModel): void {
+    const newList = [item, ...this.items()];
     this.items.set(newList);
   }
 
-  protected  close(){
+  protected close() {
     this._visible.set(false);
   }
 }

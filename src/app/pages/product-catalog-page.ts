@@ -23,7 +23,7 @@ import {CartItems} from '../../features/shopping-cart/cart-item';
         <ProductCatalogSkeleton />
       }
       @else{
-        <div class="lg:grid xl:grid-cols-3 lg:grid-cols-2 4xl:grid-cols-5 5xl:grid-cols-7 xl:grid-flow-row xl:gap-6 relative" (animate.enter)="handleStaggerAnimationEnter($event)">
+        <div class="lg:grid xl:grid-cols-3 lg:grid-cols-2 4xl:grid-cols-4 5xl:grid-cols-6 xl:grid-flow-row xl:gap-6 relative" (animate.enter)="handleStaggerAnimationEnter($event)">
           @for(p of products() ;track p.id){
             <div class="mb-[100px] rounded-2xl border-2 bg-white dark:bg-transparent  product-catalog border-gray-300 dark:border-surface-700 px-6
           hover:shadow-xl hover:dark:shadow-gray-600 duration-300 hover:scale-105">
@@ -47,7 +47,7 @@ import {CartItems} from '../../features/shopping-cart/cart-item';
 
 
     </div>
-    <CartItems #cartComponent label="Shopping Cart" [visible]="showCartItems()" />
+    <CartItems #cartComponent label="Shopping Cart" />
   `,
   styles: ``,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -56,7 +56,6 @@ export class ProductCatalogPage extends BaseUIComponent {
   private productCatalogService = inject(ProductCatalogService);
   protected products = signal<ProductInfoModel[]>([]);
   protected isLoading = signal<boolean>(false);
-  protected showCartItems = signal<boolean>(false);
   cartComponent = viewChild<CartItems>("cartComponent");
   constructor() {
     super();
@@ -80,7 +79,6 @@ export class ProductCatalogPage extends BaseUIComponent {
   }
 
   addToCart(product: ProductInfoModel){
-    this.showCartItems.set(true);
     const cartItem: CartItemModel = {
       productInfo : product,
       qty  :1,
