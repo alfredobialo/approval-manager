@@ -94,12 +94,11 @@ export abstract class BaseUIComponent {
         from : -50
       }
     });
-    console.log("Product Catalog Page ANIMATION ", elem);
   }
 
   handleSlideFromRightUIEnterAnimation(evt : AnimationCallbackEvent) {
     const anim  =  animate(evt.target, {
-      duration: 700,
+      duration: 500,
       opacity: {
         from: 0
       },
@@ -111,7 +110,7 @@ export abstract class BaseUIComponent {
   }
   handleSlideFromRightUILeaveAnimation(evt :  AnimationCallbackEvent) {
     animate(evt.target, {
-      duration: 800,
+      duration: 360,
       opacity: {
         to: 0
       },

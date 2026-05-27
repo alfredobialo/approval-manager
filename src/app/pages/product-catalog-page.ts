@@ -8,13 +8,15 @@ import {BaseUIComponent} from '../../shared/BaseUIComponent';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {ProductCatalogSkeleton} from '../../features/shopping-cart/product-catalog-skeleton';
 import {CartItems} from '../../features/shopping-cart/cart-item';
+import {ButtonModule} from 'primeng/button';
 @Component({
   imports: [
     CommonModule,
     NgOptimizedImage,
     RouterLink,
     ProductCatalogSkeleton,
-    CartItems
+    CartItems,
+    ButtonModule
   ],
   template: `
     <div class="h-full">
@@ -34,7 +36,7 @@ import {CartItems} from '../../features/shopping-cart/cart-item';
               <p class="text-md">{{ p.currency }} <span class="font-bold text-[1.3rem] dark:text-primary-200 text-primary-600">{{ p.price | number }}</span></p>
               <div class="flex xl:justify-between px-4 py-2 mt-8">
                 <div class="">Qty Component</div>
-                <button class= "shadow text-lg dark:bg-stone-600 px-6 py-2 rounded-lg   dark:hover:bg-stone-500 bg-primary-400  "
+                <button pButton class= "shadow text-lg dark:bg-stone-600 px-6 py-2 rounded-lg   dark:hover:bg-stone-500 bg-primary-400  "
                 (click)="addToCart(p)">Add To Cart</button>
               </div>
             </div>
